@@ -11,6 +11,14 @@
 	"engines": {
 		"vscode": "^1.38.0"
 	},
+	"bugs": {
+		"url": "https://github.com/LuminusDev/aws-azure-login-vscode/issues"
+	},
+	"repository": {
+		"url": "https://github.com/LuminusDev/aws-azure-login-vscode.git",
+		"type": "git"
+	},
+	"homepage": "https://github.com/LuminusDev/aws-azure-login-vscode/blob/master/README.md",
 	"categories": [
 		"Other"
 	],
