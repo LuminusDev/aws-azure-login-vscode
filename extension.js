@@ -25,6 +25,8 @@ function activate(context) {
 	console.log('Congratulations, your extension "azureloginaws" is now active!');
 
 	const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+	statusBarItem.tooltip = `Select default AWS profile`;
+	statusBarItem.command = `profileProvider.setDefaultProfileWithStatusBar`;
 
 	const profileProvider = new ProfileProvider(statusBarItem);
 	vscode.window.registerTreeDataProvider('credentials', profileProvider);
@@ -34,13 +36,11 @@ function activate(context) {
 	vscode.commands.registerCommand('profileProvider.refreshTokenWithPrompt', (profile) => profileProvider.refreshToken(profile, true));
 	vscode.commands.registerCommand('profileProvider.refreshAllTokens', () => profileProvider.refreshToken(undefined, false));
 	vscode.commands.registerCommand('profileProvider.setDefaultProfile', (profile) => profileProvider.setDefaultProfile(profile));
+	vscode.commands.registerCommand('profileProvider.setDefaultProfileWithStatusBar', () => profileProvider.setDefaultProfileWithStatusBar());
 	vscode.commands.registerCommand('extension.writeClipboard', (text, display) => writeToClipboard(text, display));
 
 
 	profileProvider.firstLoadAction();
-
-	const myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-	context.subscriptions.push(myStatusBarItem);
 }
 exports.activate = activate;
 

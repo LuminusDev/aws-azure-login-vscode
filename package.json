@@ -7,6 +7,7 @@
 	"author": {
 		"name": "LuminusDev"
 	},
+	"icon": "media/icon.png",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.38.0"
@@ -69,6 +70,10 @@
 				}
 			},
 			{
+				"command": "profileProvider.setDefaultProfileWithStatusBar",
+				"title": "Update default profile to..."
+			},
+			{
 				"command": "profileProvider.showHideHardToken",
 				"title": "Show/hide hard tokens",
 				"icon": {
@@ -82,7 +87,7 @@
 				{
 					"id": "aws-azure-login",
 					"title": "AWS Azure Login",
-					"icon": "media/iconmonstr-amazon-1.svg"
+					"icon": "media/logo-extension.svg"
 				}
 			]
 		},
@@ -158,6 +163,10 @@
 					"when": "view == credentials"
 				},
 				{
+					"command": "profileProvider.setDefaultProfileWithStatusBar",
+					"when": "view == credentials"
+				},
+				{
 					"command": "profileProvider.showHideHardToken",
 					"when": "view == credentials"
 				}
@@ -170,10 +179,16 @@
 					"type": "boolean",
 					"default": false,
 					"description": "Refresh all credentials when the extension is loaded."
-				},"awsAzureLogin.commandOptions": {
+				},
+				"awsAzureLogin.commandOptions": {
 					"type": "string",
 					"default": "",
 					"description": "Add option to the AWS Azure login command line executed to refresh credentials."
+				},
+				"awsAzureLogin.alwaysOpenNewTerminal": {
+					"type": "boolean",
+					"default": false,
+					"description": "Open a new terminal to execute AWS Azure login command even if another one is already opened."
 				}
 			}
 		}
