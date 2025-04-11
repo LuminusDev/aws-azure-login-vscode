@@ -1,210 +1,202 @@
 {
-	"name": "azureloginaws",
-	"displayName": "AWS Azure Login",
-	"publisher": "LuminusDev",
-	"description": "Enhanced AWS Azure Login with an extension to use it in your editor.",
-	"license": "SEE LICENSE IN LICENSE.txt",
-	"author": {
-		"name": "LuminusDev"
-	},
-	"icon": "media/icon.png",
-	"version": "0.1.0",
-	"engines": {
-		"vscode": "^1.38.0"
-	},
-	"bugs": {
-		"url": "https://github.com/LuminusDev/aws-azure-login-vscode/issues"
-	},
-	"repository": {
-		"url": "https://github.com/LuminusDev/aws-azure-login-vscode.git",
-		"type": "git"
-	},
-	"homepage": "https://github.com/LuminusDev/aws-azure-login-vscode/blob/master/README.md",
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"*"
-	],
-	"main": "./extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "profileProvider.refreshEntry",
-				"title": "Refresh",
-				"icon": {
-					"dark": "media/dark/refresh.svg",
-					"light": "media/light/refresh.svg"
-				}
-			},
-			{
-				"command": "profileProvider.refreshToken",
-				"title": "Refresh Token",
-				"icon": {
-					"dark": "media/dark/key.svg",
-					"light": "media/light/key.svg"
-				}
-			},
-			{
-				"command": "profileProvider.refreshTokenWithPrompt",
-				"title": "Refresh Token with prompt",
-				"icon": {
-					"dark": "media/dark/key.svg",
-					"light": "media/light/key.svg"
-				}
-			},
-			{
-				"command": "profileProvider.refreshAllTokens",
-				"title": "Refresh All Tokens",
-				"icon": {
-					"dark": "media/dark/key.svg",
-					"light": "media/light/key.svg"
-				}
-			},
-			{
-				"command": "profileProvider.setDefaultProfile",
-				"title": "Update default with this profile",
-				"icon": {
-					"dark": "media/dark/sign-in.svg",
-					"light": "media/light/sign-in.svg"
-				}
-			},
-			{
-				"command": "profileProvider.setDefaultProfileWithStatusBar",
-				"title": "Update default profile to..."
-			},
-			{
-				"command": "profileProvider.showHideHardToken",
-				"title": "Show/hide hard tokens",
-				"icon": {
-					"dark": "media/dark/collapse-all.svg",
-					"light": "media/light/collapse-all.svg"
-				}
-			}
-		],
-		"viewsContainers": {
-			"activitybar": [
-				{
-					"id": "aws-azure-login",
-					"title": "AWS Azure Login",
-					"icon": "media/logo-extension.svg"
-				}
-			]
-		},
-		"views": {
-			"aws-azure-login": [
-				{
-					"id": "credentials",
-					"name": "Credentials"
-				}
-			]
-		},
-		"menus": {
-			"view/title": [
-				{
-					"command": "profileProvider.refreshEntry",
-					"when": "view == credentials",
-					"group": "navigation"
-				},
-				{
-					"command": "profileProvider.refreshAllTokens",
-					"when": "view == credentials",
-					"group": "navigation"
-				},
-				{
-					"command": "profileProvider.showHideHardToken",
-					"when": "view == credentials",
-					"group": "navigation"
-				}
-			],
-			"view/item/context": [
-				{
-					"command": "profileProvider.setDefaultProfile",
-					"when": "view == credentials && viewItem =~ /.*Token/",
-					"group": "inline"
-				},
-				{
-					"command": "profileProvider.refreshToken",
-					"when": "view == credentials && viewItem =~ /refreshable.*/",
-					"group": "inline"
-				},
-				{
-					"command": "profileProvider.refreshToken",
-					"when": "view == credentials && viewItem =~ /refreshable.*/"
-				},
-				{
-					"command": "profileProvider.refreshTokenWithPrompt",
-					"when": "view == credentials && viewItem =~ /refreshable.*/"
-				},
-				{
-					"command": "profileProvider.setDefaultProfile",
-					"when": "view == credentials && viewItem =~ /.*Token/"
-				}
-			],
-			"commandPalette": [
-				{
-					"command": "profileProvider.refreshEntry",
-					"when": "view == credentials"
-				},
-				{
-					"command": "profileProvider.refreshAllTokens",
-					"when": "view == credentials"
-				},
-				{
-					"command": "profileProvider.refreshToken",
-					"when": "view == credentials"
-				},
-				{
-					"command": "profileProvider.refreshTokenWithPrompt",
-					"when": "view == credentials"
-				},
-				{
-					"command": "profileProvider.setDefaultProfile",
-					"when": "view == credentials"
-				},
-				{
-					"command": "profileProvider.setDefaultProfileWithStatusBar",
-					"when": "view == credentials"
-				},
-				{
-					"command": "profileProvider.showHideHardToken",
-					"when": "view == credentials"
-				}
-			]
-		},
-		"configuration": {
-			"title": "azureLoginAWS",
-			"properties": {
-				"awsAzureLogin.refreshOnLoad": {
-					"type": "boolean",
-					"default": false,
-					"description": "Refresh all credentials when the extension is loaded."
-				},
-				"awsAzureLogin.commandOptions": {
-					"type": "string",
-					"default": "",
-					"description": "Add option to the AWS Azure login command line executed to refresh credentials."
-				},
-				"awsAzureLogin.alwaysOpenNewTerminal": {
-					"type": "boolean",
-					"default": false,
-					"description": "Open a new terminal to execute AWS Azure login command even if another one is already opened."
-				}
-			}
-		}
-	},
-	"scripts": {
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.38.0",
-		"eslint": "^5.13.0",
-		"glob": "^7.1.4",
-		"mocha": "^6.1.4",
-		"typescript": "^3.3.1",
-		"vscode-test": "^1.2.0"
-	}
+  "name": "azureloginaws",
+  "displayName": "AWS Azure Login",
+  "publisher": "LuminusDev",
+  "description": "Enhanced AWS Azure Login with an extension to use it in your editor.",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "author": {
+    "name": "LuminusDev"
+  },
+  "icon": "media/key.png",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.38.0"
+  },
+  "bugs": {
+    "url": "https://github.com/LuminusDev/aws-azure-login-vscode/issues"
+  },
+  "repository": {
+    "url": "https://github.com/LuminusDev/aws-azure-login-vscode.git",
+    "type": "git"
+  },
+  "homepage": "https://github.com/LuminusDev/aws-azure-login-vscode/blob/master/README.md",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "profileProvider.refreshEntry",
+        "title": "Refresh",
+        "icon": {
+          "dark": "media/dark/refresh.svg",
+          "light": "media/light/refresh.svg"
+        }
+      },
+      {
+        "command": "profileProvider.refreshToken",
+        "title": "Refresh Token",
+        "icon": {
+          "dark": "media/dark/key.svg",
+          "light": "media/light/key.svg"
+        }
+      },
+      {
+        "command": "profileProvider.refreshTokenWithPrompt",
+        "title": "Refresh Token with prompt",
+        "icon": {
+          "dark": "media/dark/key.svg",
+          "light": "media/light/key.svg"
+        }
+      },
+      {
+        "command": "profileProvider.refreshAllTokens",
+        "title": "Refresh All Tokens",
+        "icon": {
+          "dark": "media/dark/key.svg",
+          "light": "media/light/key.svg"
+        }
+      },
+      {
+        "command": "profileProvider.setDefaultProfile",
+        "title": "Update default with this profile",
+        "icon": {
+          "dark": "media/dark/sign-in.svg",
+          "light": "media/light/sign-in.svg"
+        }
+      },
+      {
+        "command": "profileProvider.setDefaultProfileWithStatusBar",
+        "title": "Update default profile to..."
+      },
+      {
+        "command": "profileProvider.showHideHardToken",
+        "title": "Show/hide hard tokens",
+        "icon": {
+          "dark": "media/dark/collapse-all.svg",
+          "light": "media/light/collapse-all.svg"
+        }
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "aws-azure-login",
+          "title": "AWS Azure Login",
+          "icon": "$(key)"
+        }
+      ]
+    },
+    "views": {
+      "aws-azure-login": [
+        {
+          "id": "credentials",
+          "name": "Credentials"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "profileProvider.refreshEntry",
+          "when": "view == credentials",
+          "group": "navigation"
+        },
+        {
+          "command": "profileProvider.refreshAllTokens",
+          "when": "view == credentials",
+          "group": "navigation"
+        },
+        {
+          "command": "profileProvider.showHideHardToken",
+          "when": "view == credentials",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "profileProvider.setDefaultProfile",
+          "when": "view == credentials && viewItem =~ /.*Token/",
+          "group": "inline"
+        },
+        {
+          "command": "profileProvider.refreshToken",
+          "when": "view == credentials && viewItem =~ /refreshable.*/",
+          "group": "inline"
+        },
+        {
+          "command": "profileProvider.refreshToken",
+          "when": "view == credentials && viewItem =~ /refreshable.*/"
+        },
+        {
+          "command": "profileProvider.refreshTokenWithPrompt",
+          "when": "view == credentials && viewItem =~ /refreshable.*/"
+        },
+        {
+          "command": "profileProvider.setDefaultProfile",
+          "when": "view == credentials && viewItem =~ /.*Token/"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "profileProvider.refreshEntry",
+          "when": "view == credentials"
+        },
+        {
+          "command": "profileProvider.refreshAllTokens",
+          "when": "view == credentials"
+        },
+        {
+          "command": "profileProvider.refreshToken",
+          "when": "view == credentials"
+        },
+        {
+          "command": "profileProvider.refreshTokenWithPrompt",
+          "when": "view == credentials"
+        },
+        {
+          "command": "profileProvider.setDefaultProfile",
+          "when": "view == credentials"
+        },
+        {
+          "command": "profileProvider.setDefaultProfileWithStatusBar",
+          "when": "view == credentials"
+        },
+        {
+          "command": "profileProvider.showHideHardToken",
+          "when": "view == credentials"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "azureLoginAWS",
+      "properties": {
+        "awsAzureLogin.refreshOnLoad": {
+          "type": "boolean",
+          "default": false,
+          "description": "Refresh all credentials when the extension is loaded."
+        },
+        "awsAzureLogin.commandOptions": {
+          "type": "string",
+          "default": "",
+          "description": "Add option to the AWS Azure login command line executed to refresh credentials."
+        },
+        "awsAzureLogin.alwaysOpenNewTerminal": {
+          "type": "boolean",
+          "default": false,
+          "description": "Open a new terminal to execute AWS Azure login command even if another one is already opened."
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.21",
+    "@types/vscode": "^1.38.0",
+    "eslint": "^5.13.0",
+    "vscode-test": "^1.2.0"
+  }
 }
